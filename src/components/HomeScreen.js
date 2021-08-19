@@ -1,14 +1,14 @@
 import React from 'react'
-import { Header } from '../layout/Header'
+import { Header } from './layout/Header'
 
-export const NoteScreen = () => {
+export const HomeScreen = () => {
     return (
         <>
             <div>
                 <Header />
                 <header className="bg-white shadow">
                     <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        <h1 className="text-3xl font-bold text-gray-900">Note</h1>
+                        <h1 className="text-3xl font-bold text-gray-900">Home</h1>
                     </div>
                 </header>
                 <main>

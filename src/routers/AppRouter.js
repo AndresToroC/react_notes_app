@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import {
     BrowserRouter as Router,
+    Redirect,
     Switch
 } from 'react-router-dom';
 
@@ -12,6 +13,8 @@ import { PrivateRoute } from './PrivateRoute';
 import { PublicRoute } from './PublicRoute';
 import { userAuth } from '../actions/auth';
 import { useDispatch } from 'react-redux';
+import { HomeScreen } from '../components/HomeScreen';
+import { ProfileScreen } from '../components/user/ProfileScreen';
 
 export const AppRouter = () => {
     const dispatch = useDispatch();
@@ -23,7 +26,7 @@ export const AppRouter = () => {
     useEffect(() => {
         firebase.auth().onAuthStateChanged(async(user) => {
             if (user?.uid) {
-                dispatch(userAuth(user.uid, user.displayName));
+                dispatch(userAuth(user.uid, user.displayName, user.email));
                 setIsLogin(true);
             } else {
                 setIsLogin(false);
@@ -35,9 +38,9 @@ export const AppRouter = () => {
 
     if (isChecking) {
         return (
-            <div class="w-full h-full fixed block top-0 left-0 bg-white opacity-75 z-50">
-                <span class="text-green-500 opacity-75 top-1/2 my-0 mx-auto block relative w-0 h-0" style={{ top: '50%' }}>
-                    <i class="fas fa-circle-notch fa-spin fa-5x"></i>
+            <div className="w-full h-full fixed block top-0 left-0 bg-white opacity-75 z-50">
+                <span className="text-green-500 opacity-75 top-1/2 my-0 mx-auto block relative w-0 h-0" style={{ top: '50%' }}>
+                    <i className="fas fa-circle-notch fa-spin fa-5x"></i>
                 </span>
             </div>
         );
@@ -54,9 +57,27 @@ export const AppRouter = () => {
                 <PrivateRoute 
                     exact
                     path="/"
+                    component={ HomeScreen }
+                    isAuth={ isLogin }
+                />
+                <PrivateRoute 
+                    exact
+                    path="/notes"
                     component={ NoteScreen }
                     isAuth={ isLogin }
                 />
+                <PrivateRoute 
+                    exact
+                    path="/profile"
+                    component={ ProfileScreen }
+                    isAuth={ isLogin }
+                />
+
+                {
+                    (isLogin)
+                        ? ( <Redirect to="/" /> )
+                        : ( <Redirect to="/auth/login" /> )
+                }
             </Switch>
         </Router>
     )

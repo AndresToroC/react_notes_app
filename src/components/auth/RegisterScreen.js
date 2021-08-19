@@ -24,14 +24,14 @@ export const RegisterScreen = () => {
 
         if (!validator.isEmail(email)) {
             Swal.fire({
-                title: 'Correo no valido',
+                title: 'Invalid email',
                 icon: 'error'
             })
 
             return false;
         } else if (password.length < 6 || password !== password_confirmation) {
             Swal.fire({
-                title: 'La contraseña no coincide o es menor a 6 caracteres',
+                title: 'The password does not match or is less than 6 characters',
                 icon: 'error'
             })
 
@@ -56,7 +56,7 @@ export const RegisterScreen = () => {
                     <div className="">
                         <div>
                             <label htmlFor="name" className="block text-sm font-medium text-gray-700">
-                                Nombre
+                                Name
                             </label>
                             <input
                                 id="name"
@@ -72,7 +72,7 @@ export const RegisterScreen = () => {
                         </div>
                         <div className="mt-3">
                             <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-                                Correo electronico
+                                Email
                             </label>
                             <input
                                 id="email"
@@ -88,7 +88,7 @@ export const RegisterScreen = () => {
                         </div>
                         <div className="mt-3">
                             <label htmlFor="password" className="block text-sm font-medium text-gray-700">
-                                Contraseña
+                                Password
                             </label>
                             <input
                                 id="password"
@@ -104,7 +104,7 @@ export const RegisterScreen = () => {
                         </div>
                         <div className="mt-3">
                             <label htmlFor="password_confirmation" className="block text-sm font-medium text-gray-700">
-                                Contraseña
+                                Password confirmation
                             </label>
                             <input
                                 id="password_confirmation"
@@ -123,13 +123,13 @@ export const RegisterScreen = () => {
                         type="submit"
                         className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                         >
-                            Registrate
+                            Sign up
                         </button>
                         <Link
                         to="/auth/login"
                         className="mt-2 group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
                         >
-                            Si ya tienes una cuenta, inicia sesión
+                            If you already have an account, log in
                         </Link >
                     </div>
                 </form>

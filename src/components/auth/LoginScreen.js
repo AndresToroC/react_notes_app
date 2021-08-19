@@ -22,7 +22,7 @@ export const LoginScreen = () => {
 
         if (!validator.isEmail(email)) {
             Swal.fire({
-                title: 'Correo no valido',
+                title: 'Invalid email',
                 icon: 'error'
             })
             return false;
@@ -46,7 +46,7 @@ export const LoginScreen = () => {
                     <div className="">
                         <div>
                             <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-                                Correo electronico
+                                Email
                             </label>
                             <input
                                 id="email"
@@ -60,13 +60,10 @@ export const LoginScreen = () => {
                                 value={ email }
                                 onChange={ handleInputChange }
                             />
-                            {/* <span class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">
-                                Invalid username field !
-                            </span> */}
                         </div>
                         <div className="mt-3">
                             <label htmlFor="password" className="block text-sm font-medium text-gray-700">
-                                Contraseña
+                                Password
                             </label>
                             <input
                                 id="password"
@@ -82,7 +79,7 @@ export const LoginScreen = () => {
                         </div>
                     </div>
 
-                    <div className="flex items-center justify-between">
+                    {/* <div className="flex items-center justify-between">
                         <div className="flex items-center">
                         <input
                             id="remember-me"
@@ -100,20 +97,20 @@ export const LoginScreen = () => {
                                 ¿Olvidastes tu contraseña?
                             </Link>
                         </div>
-                    </div>
+                    </div> */}
 
                     <div>
                         <button
                         type="submit"
                         className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                         >
-                            Iniciar Sesión
+                            Log in
                         </button>
                         <Link
                         to="/auth/register"
                         className="mt-2 group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
                         >
-                            Registrate
+                            Sign up
                         </Link >
                     </div>
                 </form>
