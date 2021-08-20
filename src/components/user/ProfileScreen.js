@@ -42,6 +42,13 @@ export const ProfileScreen = () => {
         }
 
         dispatch(updatedProfile(name, password));
+
+        Swal.fire({
+            title: 'Updated profile',
+            icon: 'success'
+        })
+
+        return true;
     }
 
     return (

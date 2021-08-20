@@ -60,11 +60,6 @@ export const updatedProfile = (name, password) => {
                 }
     
                 dispatch(userAuth(user.uid, user.displayName, user.email));
-    
-                Swal.fire({
-                    title: 'Updated profile',
-                    icon: 'success'
-                })
             }
         })
     }

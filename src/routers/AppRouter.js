@@ -15,6 +15,7 @@ import { userAuth } from '../actions/auth';
 import { useDispatch } from 'react-redux';
 import { HomeScreen } from '../components/HomeScreen';
 import { ProfileScreen } from '../components/user/ProfileScreen';
+import { loadNotes } from '../actions/note';
 
 export const AppRouter = () => {
     const dispatch = useDispatch();
@@ -28,6 +29,8 @@ export const AppRouter = () => {
             if (user?.uid) {
                 dispatch(userAuth(user.uid, user.displayName, user.email));
                 setIsLogin(true);
+                
+                dispatch(loadNotes(user.uid));
             } else {
                 setIsLogin(false);
             }
